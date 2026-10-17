@@ -1,7 +1,7 @@
 {
-  "name": "your-game-api",
+  "name": "scholar-s-run-api",
   "version": "1.0.0",
-  "description": "CHANGE_ME - one sentence about your game (CS 313 Software Engineering 1)",
+  "description": "Scholar's Run is a timed, campus-based quiz survival and strategy game where players navigate university locations, answer questions, manage their Energy, and compete for the highest final score.)",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
@@ -19,7 +19,7 @@
   "engines": {
     "node": ">=22"
   },
-  "author": "CHANGE_ME - your full name",
+  "author": "Raquid, Paul Harren G.",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^18.0.7",
