@@ -58,13 +58,24 @@ Base URL: `http://localhost:3001/api/v1`
 | GET | /game-info | Slug, name, group, developer, description, player limits, version | 200 |
 | GET | /results | Finished games, every player, and the top 3. Needs the `X-Hub-Key` header. Optional `?since=` | 200 (401 without the key) |
 
-## What "completed" means in my game
+### What "completed" means in my game
 
-[One or two sentences: when does a player count as having completed a game? For example: "A player completed the game when they answered every question, even if some answers were wrong or timed out."]
+A player is considered completed if their run has a `FINISHED` status when the tournament ends. Players with an `ELIMINATED` status are marked as not completed. Eliminated players remain in the final results with their final scores but do not receive a leaderboard rank or podium placement.
 
-## Tables
+### Tables
 
-[List your tables, one line each, in the order of your migrations.]
+| Table | Purpose |
+|---|---|
+| `users` | Stores user account information, including name, role, school ID, and email. |
+| `game_sessions` | Stores tournament sessions, join codes, status, host, and start/end times. |
+| `seats` | Connects users to tournament sessions and stores their in-game nicknames. |
+| `runs` | Stores player status, Energy, accumulated points, final score, and run timestamps. |
+| `locations` | Stores campus locations available in the game. |
+| `location_routes` | Defines connections between campus locations. |
+| `questions` | Stores the questions used during gameplay. |
+| `location_visits` | Records locations visited during player runs. |
+| `question_attempts` | Records players' question-answer attempts. |
+| `location_rewards_claimed` | Records rewards claimed by players. |
 
 ## Database scripts
 
