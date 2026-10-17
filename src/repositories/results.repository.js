@@ -11,6 +11,7 @@ async function findFinishedGamePlayers(since) {
       u.school_id AS school_id,
       s.nickname AS nickname,
       r.final_score AS score,
+      -- Only FINISHED runs count as completed; eliminated runs remain in results.
       (r.status = 'FINISHED') AS completed
     FROM game_sessions gs
     JOIN seats s
