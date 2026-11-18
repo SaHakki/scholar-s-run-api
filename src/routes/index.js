@@ -12,7 +12,7 @@ router.use('/game-info', require('./game-info.routes'));
 router.use(currentUser);
 
 // Mount your modules here, one line each. For example:
-// router.use('/question-sets', require('./question-set.routes'));
+router.use('/sessions/:code/questions', require('./question.routes'));
 // router.use('/sessions', require('./session.routes'));
 
 module.exports = router;
