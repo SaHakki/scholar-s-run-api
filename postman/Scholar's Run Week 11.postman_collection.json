@@ -435,6 +435,679 @@
         }
       },
       "response": []
+    },
+    {
+      "name": "POST - Create session",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/sessions",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST - Join session as first player",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nickname\": \"Pao\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/772008/players",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "772008",
+            "players"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST - Rejoin session as same player",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1002"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nickname\": \"Pao\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/668918/players",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "668918",
+            "players"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - Start session with insufficient players",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"status\": \"ACTIVE\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/668918",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "668918"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - Join session with duplicate nickname",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1003"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nickname\": \"Pao\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/668918/players",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "668918",
+            "players"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST - Join session as second player",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1003"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nickname\": \"Dale\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/668918/players",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "668918",
+            "players"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PATCH - Start session with sufficient players",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"status\": \"ACTIVE\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/668918",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "668918"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - Join active session as new player",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1004"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nickname\": \"Mika\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/668918/players",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "668918",
+            "players"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST - Rejoin active session as existing player",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1002"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nickname\": \"Pao\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/668918/players",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "668918",
+            "players"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PATCH - Finish active session",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"status\": \"FINISHED\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/668918",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "668918"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - Reactivate finished session",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"status\": \"ACTIVE\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/668918",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "668918"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - Get session with invalid code",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/sessions/12345",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "12345"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - Join session with invalid nickname",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1004"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nickname\": \"A\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/668918/players",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "668918",
+            "players"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - Create session without authentication",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/sessions",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - Player attempts to create session",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1002"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/sessions",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - Second host modifies another host's session",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1006"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"status\": \"ACTIVE\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/668918",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "668918"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - Get session with unknown code",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/sessions/999999",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "999999"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - Join session when already in another active game",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/sessions",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST - Join session as first player (active-game setup)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1002"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nickname\": \"Pao\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/498607/players",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "498607",
+            "players"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST - Join session as second player (active-game setup)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1003"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nickname\": \"Dale\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/498607/players",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "498607",
+            "players"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PATCH - Activate session for one-game-at-a-time test",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"status\": \"ACTIVE\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/498607",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "498607"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST - Create second waiting session (one-game-at-a-time test)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/sessions",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - Join another session while already in active game",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1002"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nickname\": \"Pao\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/143991/players",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "143991",
+            "players"
+          ]
+        }
+      },
+      "response": []
     }
   ],
   "variable": [

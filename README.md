@@ -1,6 +1,6 @@
 # Scholar's Run API
 
-Backend API for **Scholar's Run**, a tournament game for the SorSU Bulan Campus library.
+Backend API for **Scholar's Run**, a tournament game for the SorSU Bulan Campus library.  
 CS 313 Software Engineering 1, A.Y. 2026-2027.
 
 - Developer: Paul Harren Raquid (SaHakki), BSCS 3-1
@@ -19,7 +19,7 @@ This is my own build of my group's game concept. Every commit in this repository
 
 ## Setup
 
-```
+```bash
 git clone [repository-url]
 cd [folder-name]
 npm install
@@ -27,8 +27,8 @@ npm install
 
 Copy `.env.example` to `.env`, then put your own PostgreSQL password in `DB_PASSWORD`.
 
-```
-npm run db:create     (first time only)
+```bash
+npm run db:create     # first time only
 npm run db:migrate
 npm run db:seed
 npm run db:check
@@ -52,17 +52,54 @@ npm run dev
 
 Base URL: `http://localhost:3001/api/v1`
 
+### Library Game Hub endpoints
+
 | Method | Path | Purpose | Success |
 |---|---|---|---|
-| GET | /health | Is the API up and can it reach the database? | 200 (503 when the database is down) |
-| GET | /game-info | Slug, name, group, developer, description, player limits, version | 200 |
-| GET | /results | Finished games, every player, and the top 3. Needs the `X-Hub-Key` header. Optional `?since=` | 200 (401 without the key) |
+| GET | `/health` | Is the API up and can it reach the database? | 200 (503 when the database is down) |
+| GET | `/game-info` | Slug, name, group, developer, description, player limits, version | 200 |
+| GET | `/results` | Finished games, every player, and the top 3. Needs the `X-Hub-Key` header. Optional `?since=` | 200 (401 without the key) |
 
-### What "completed" means in my game
+### Session and player endpoints
+
+| Method | Path | Who may call |
+|---|---|---|
+| POST | `/sessions` | Host |
+| GET | `/sessions/:code` | Authenticated user |
+| PATCH | `/sessions/:code` | Session-owning host |
+| POST | `/sessions/:code/players` | Authenticated user |
+| GET | `/sessions/:code/players` | Authenticated user |
+
+### Question endpoints
+
+All question endpoints require an authenticated host.
+
+| Method | Path | Who may call |
+|---|---|---|
+| GET | `/sessions/:code/questions` | Host |
+| POST | `/sessions/:code/questions` | Host |
+| GET | `/sessions/:code/questions/:questionId` | Host |
+| PUT | `/sessions/:code/questions/:questionId` | Host |
+| DELETE | `/sessions/:code/questions/:questionId` | Host |
+
+## Postman test accounts
+
+The following seeded accounts are used for API testing through the temporary `X-Demo-User` request header.
+
+| Account | School ID | Role |
+|---|---|---|
+| Alex | `2099-1001` | Host |
+| Pao | `2099-1002` | Player |
+| Dale | `2099-1003` | Player |
+| Riley | `2099-1006` | Second host |
+
+These demo accounts and the `X-Demo-User` header are for development and testing, not production authentication.
+
+## What "completed" means in my game
 
 A player is considered completed if their run has a `FINISHED` status when the tournament ends. Players with an `ELIMINATED` status are marked as not completed. Eliminated players remain in the final results with their final scores but do not receive a leaderboard rank or podium placement.
 
-### Tables
+## Tables
 
 | Table | Purpose |
 |---|---|
@@ -81,9 +118,9 @@ A player is considered completed if their run has a `FINISHED` status when the t
 
 | Command | What it does |
 |---|---|
-| npm run db:migrate | Runs migrations that have not run yet |
-| npm run db:migrate:status | Lists every migration as up or down |
-| npm run db:seed | Loads the seed data |
-| npm run db:check | Counts the rows in every table |
-| npm run db:reset | Empties the database, rebuilds every table and reloads the seed data |
-| npm run check | Runs the same automatic check that GitHub runs after every push |
+| `npm run db:migrate` | Runs migrations that have not run yet |
+| `npm run db:migrate:status` | Lists every migration as up or down |
+| `npm run db:seed` | Loads the seed data |
+| `npm run db:check` | Counts the rows in every table |
+| `npm run db:reset` | Empties the database, rebuilds every table and reloads the seed data |
+| `npm run check` | Runs the same automatic check that GitHub runs after every push |
