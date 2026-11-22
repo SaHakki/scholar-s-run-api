@@ -1,8 +1,16 @@
 const { GameSession } = require('../models');
 
-// A row, or null. Module 2 will add create() and update() to this file.
+// A row, or null.
 function findByCode(code) {
   return GameSession.findOne({ where: { join_code: code } });
 }
 
-module.exports = { findByCode };
+function create(data) {
+  return GameSession.create(data);
+}
+
+function update(session, changes) {
+  return session.update(changes);
+}
+
+module.exports = { findByCode, create, update };

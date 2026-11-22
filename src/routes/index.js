@@ -14,6 +14,6 @@ router.use(currentUser);
 
 // Mount your modules here, one line each. For example:
 router.use('/sessions/:code/questions', require('./question.routes'));
-// router.use('/sessions', require('./session.routes'));
+router.use('/sessions', require('./session.routes'));
 
 module.exports = router;

@@ -2,7 +2,7 @@ const { body, param } = require('express-validator');
 
 // Values in the URL
 const codeParam = param('code')
-  .matches(/^\d{6}$/).withMessage('code must be exactly 6 digits');
+  .matches(/^[1-9][0-9]{5}$/).withMessage('the join code must be six digits');
 
 const questionIdParam = param('questionId')
   .isInt({ min: 1 }).withMessage('questionId must be a positive whole number')
