@@ -11,3 +11,10 @@ Thumbs.db
 
 # logs
 *.log
+
+# test coverage
+coverage/
+
+# uploaded files - keep the folder structure, ignore uploaded files
+uploads/*/*
+!uploads/*/.gitkeep
