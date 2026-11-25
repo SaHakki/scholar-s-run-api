@@ -1,0 +1,1131 @@
+{
+  "info": {
+    "_postman_id": "7a3606be-54b2-4189-9109-cdb376cd0d89",
+    "name": "Scholar's Run Week 11",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58965368",
+    "_collection_link": "https://go.postman.co/collection/58965368-7a3606be-54b2-4189-9109-cdb376cd0d89?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "SUCCESS - Create question",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"location_id\": 6,\r\n  \"question_text\": \"Which component executes program instructions?\",\r\n  \"choice_a\": \"Monitor\",\r\n  \"choice_b\": \"CPU\",\r\n  \"choice_c\": \"Keyboard\",\r\n  \"choice_d\": \"Printer\",\r\n  \"correct_choice\": \"B\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3001/api/v1/sessions/472916/questions",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3001",
+          "path": [
+            "api",
+            "v1",
+            "sessions",
+            "472916",
+            "questions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "SUCCESS - List questions",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3001/api/v1/sessions/472916/questions",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3001",
+          "path": [
+            "api",
+            "v1",
+            "sessions",
+            "472916",
+            "questions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "SUCCESS - Get one question",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3001/api/v1/sessions/472916/questions/10",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3001",
+          "path": [
+            "api",
+            "v1",
+            "sessions",
+            "472916",
+            "questions",
+            "10"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "SUCCESS - Update question",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"location_id\": 6,\r\n  \"question_text\": \"Which computer component is responsible for executing instructions?\",\r\n  \"choice_a\": \"Monitor\",\r\n  \"choice_b\": \"CPU\",\r\n  \"choice_c\": \"Keyboard\",\r\n  \"choice_d\": \"Printer\",\r\n  \"correct_choice\": \"B\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3001/api/v1/sessions/472916/questions/11",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3001",
+          "path": [
+            "api",
+            "v1",
+            "sessions",
+            "472916",
+            "questions",
+            "11"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "SUCCESS - Delete question",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3001/api/v1/sessions/472916/questions/11",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3001",
+          "path": [
+            "api",
+            "v1",
+            "sessions",
+            "472916",
+            "questions",
+            "11"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - POST question with bad field",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"location_id\": 6,\r\n  \"question_text\": \"CPU\",\r\n  \"choice_a\": \"Monitor\",\r\n  \"choice_b\": \"CPU\",\r\n  \"choice_c\": \"Keyboard\",\r\n  \"choice_d\": \"Printer\",\r\n  \"correct_choice\": \"B\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3001/api/v1/sessions/472916/questions",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3001",
+          "path": [
+            "api",
+            "v1",
+            "sessions",
+            "472916",
+            "questions"
+          ]
+        },
+        "description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - POST question with broken JSON",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"location_id\": 6,\r\n  \"question_text\": \"Which component executes instructions?\",\r\n  \"choice_a\": \"Monitor\",\r\n  \"choice_b\": \"CPU\",\r\n  \"choice_c\": \"Keyboard\",\r\n  \"choice_d\": \"Printer\",\r\n  \"correct_choice\": \"B\",",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3001/api/v1/sessions/472916/questions",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3001",
+          "path": [
+            "api",
+            "v1",
+            "sessions",
+            "472916",
+            "questions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - GET questions without auth",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3001/api/v1/sessions/472916/questions",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3001",
+          "path": [
+            "api",
+            "v1",
+            "sessions",
+            "472916",
+            "questions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - GET questions as player",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1002"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3001/api/v1/sessions/472916/questions",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3001",
+          "path": [
+            "api",
+            "v1",
+            "sessions",
+            "472916",
+            "questions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - GET questions as other host",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1006"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3001/api/v1/sessions/472916/questions",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3001",
+          "path": [
+            "api",
+            "v1",
+            "sessions",
+            "472916",
+            "questions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - GET questions with nonexistent game",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3001/api/v1/sessions/999999/questions",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3001",
+          "path": [
+            "api",
+            "v1",
+            "sessions",
+            "999999",
+            "questions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - POST question with nonexistent location",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"location_id\": 9999,\r\n  \"question_text\": \"Which component executes program instructions?\",\r\n  \"choice_a\": \"Monitor\",\r\n  \"choice_b\": \"CPU\",\r\n  \"choice_c\": \"Keyboard\",\r\n  \"choice_d\": \"Printer\",\r\n  \"correct_choice\": \"B\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3001/api/v1/sessions/472916/questions",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3001",
+          "path": [
+            "api",
+            "v1",
+            "sessions",
+            "472916",
+            "questions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - POST question to finished game",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"location_id\": 6,\r\n  \"question_text\": \"Which component executes program instructions?\",\r\n  \"choice_a\": \"Monitor\",\r\n  \"choice_b\": \"CPU\",\r\n  \"choice_c\": \"Keyboard\",\r\n  \"choice_d\": \"Printer\",\r\n  \"correct_choice\": \"B\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3001/api/v1/sessions/583104/questions",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3001",
+          "path": [
+            "api",
+            "v1",
+            "sessions",
+            "583104",
+            "questions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST - Create session",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/sessions",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST - Join session as first player",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nickname\": \"Pao\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/772008/players",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "772008",
+            "players"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST - Rejoin session as same player",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1002"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nickname\": \"Pao\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/668918/players",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "668918",
+            "players"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - Start session with insufficient players",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"status\": \"ACTIVE\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/668918",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "668918"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - Join session with duplicate nickname",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1003"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nickname\": \"Pao\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/668918/players",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "668918",
+            "players"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST - Join session as second player",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1003"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nickname\": \"Dale\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/668918/players",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "668918",
+            "players"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PATCH - Start session with sufficient players",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"status\": \"ACTIVE\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/668918",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "668918"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - Join active session as new player",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1004"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nickname\": \"Mika\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/668918/players",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "668918",
+            "players"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST - Rejoin active session as existing player",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1002"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nickname\": \"Pao\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/668918/players",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "668918",
+            "players"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PATCH - Finish active session",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"status\": \"FINISHED\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/668918",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "668918"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - Reactivate finished session",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"status\": \"ACTIVE\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/668918",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "668918"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - Get session with invalid code",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/sessions/12345",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "12345"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - Join session with invalid nickname",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1004"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nickname\": \"A\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/668918/players",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "668918",
+            "players"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - Create session without authentication",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/sessions",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - Player attempts to create session",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1002"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/sessions",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - Second host modifies another host's session",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1006"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"status\": \"ACTIVE\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/668918",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "668918"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - Get session with unknown code",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/sessions/999999",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "999999"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - Join session when already in another active game",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/sessions",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST - Join session as first player (active-game setup)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1002"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nickname\": \"Pao\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/498607/players",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "498607",
+            "players"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST - Join session as second player (active-game setup)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1003"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nickname\": \"Dale\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/498607/players",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "498607",
+            "players"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PATCH - Activate session for one-game-at-a-time test",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"status\": \"ACTIVE\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/498607",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "498607"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST - Create second waiting session (one-game-at-a-time test)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1001"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/sessions",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FAIL - Join another session while already in active game",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Demo-User",
+            "value": "2099-1002"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nickname\": \"Pao\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sessions/143991/players",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sessions",
+            "143991",
+            "players"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": ""
+    },
+    {
+      "key": "host",
+      "value": ""
+    },
+    {
+      "key": "otherHost",
+      "value": ""
+    },
+    {
+      "key": "player",
+      "value": ""
+    }
+  ]
+}
